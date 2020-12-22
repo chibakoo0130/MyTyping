@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タイピング：メニュー</title>
+</head>
+<body>
+  <div align="center">
+    <a>タイピング</a>
+  </div>
+  <div align="center">
+    <form th:action="@{/start}" method="post">
+      <input id="start" type="submit" value="スタート" />
+    </form>
+    <input id="inputWord" type="submit" value="単語登録" />
+  </div>
+</body>
+</html>

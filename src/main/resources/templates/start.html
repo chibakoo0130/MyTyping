@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タイピング</title>
+</head>
+<body>
+  <div align="center" id="typing-area" class="typing-area">
+    <a id="typing-word"></a><br/>
+    <a id="typing-word-rome"></a>
+    <input id="typing" type="text" onkeyup="judge()" readonly>
+  </div>
+  <div align="center">
+    <form>
+      <input id="startTyping" type="button" value="スタート" />
+    </form>
+  </div>
+  <div id="result">
+  </div>
+  <script type="text/javascript" src="typing.js"></script>
+</body>
+</html>
