@@ -63,6 +63,8 @@ function hiddenWord() {
 document.addEventListener('DOMContentLoaded', function() {
 	document.getElementById('startTyping').addEventListener('click', function() {
 		var typedChar = "";
+		let wordsa = document.getElementById('words');
+		console.log(wordsa.value.split(","))
 		let wordList = new WordList();
 		wordList.appendWord('米', 'KOME');
 		wordList.appendWord('雨のち晴れ', 'AMENOTIHARE');
@@ -100,4 +102,5 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	})
 })
+
 
