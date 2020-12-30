@@ -1,6 +1,6 @@
 INSERT INTO word VALUES
-('雨のち晴れ', 'AMENOCHIHARE',NOW(), NOW()),
-('急がば回れ', 'ISOGABAMAWARE', NOW(), NOW()),
-('アメリカ', 'AMERIKA', NOW(), NOW()),
-('犬', 'INU', NOW(), NOW())
+('1', '雨のち晴れ', 'AMENOCHIHARE',NOW(), NOW()),
+('2', '急がば回れ', 'ISOGABAMAWARE', NOW(), NOW()),
+('3', 'アメリカ', 'AMERIKA', NOW(), NOW()),
+('4', '犬', 'INU', NOW(), NOW())
 ;
