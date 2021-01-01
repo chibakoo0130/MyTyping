@@ -13,7 +13,7 @@ public class Word implements Serializable {
 	/** 単語ID */
 	private String wordId;
 	/** 単語 **/
-	private String word;
+	private String wordStr;
 	/** 単語ローマ字 */
 	private String wordRome;
 	/** 登録日 */
