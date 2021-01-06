@@ -46,37 +46,24 @@ class WordListIterator {
 	}
 }
 
-function displayWord(word, wordRome) {
-	var typingWordTag = document.getElementById('typing-word');
-	var typingWord = document.createTextNode(word);
-	typingWordTag.appendChild(typingWord);
-	var typingWordRomeTag = document.getElementById('typing-word-rome');
-	var typingWordRome = document.createTextNode(wordRome);
-	typingWordRomeTag.appendChild(typingWordRome);
-}
-
-function hiddenWord() {
-	document.getElementById('typing-word').removeChild(document.getElementById('typing-word').firstChild);
-	document.getElementById('typing-word-rome').removeChild(document.getElementById('typing-word-rome').firstChild);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
 	document.getElementById('startTyping').addEventListener('click', function() {
-		var typedChar = "";
-		let wordsa = document.getElementById('words');
-		console.log(wordsa.value.split(","))
+		let typedChar = "";
+		let words = JSON.parse(document.getElementById('words').value);
+		console.log(words)
 		let wordList = new WordList();
-		wordList.appendWord('米', 'KOME');
-		wordList.appendWord('雨のち晴れ', 'AMENOTIHARE');
-		wordList.appendWord('宇宙', 'UTYUU');
-		wordList.appendWord('アメリカ', 'AMERIKA');
+		for (let word in words) {
+			console.log(word)
+			console.log(words[word])
+			wordList.appendWord(words[word].wordStr, words[word].wordRome);
+		}
 		let wordListIt = wordList.iterator();
 		let word =  wordListIt.next();
 		let subWord = word.word;
 		let subWordRome = word.wordRome;
 		displayWord(subWord, subWordRome);
 		// タイピング処理
-		var i = 0;
+		let i = 0;
 		document.onkeydown = function(e) {
 			typedChar = String.fromCharCode(e.keyCode);
 			// タイプされた文字の判定
@@ -102,5 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	})
 })
+
+function displayWord(word, wordRome) {
+	let typingWordTag = document.getElementById('typing-word');
+	let typingWord = document.createTextNode(word);
+	typingWordTag.appendChild(typingWord);
+	let typingWordRomeTag = document.getElementById('typing-word-rome');
+	let typingWordRome = document.createTextNode(wordRome);
+	typingWordRomeTag.appendChild(typingWordRome);
+}
+
+function hiddenWord() {
+	document.getElementById('typing-word').removeChild(document.getElementById('typing-word').firstChild);
+	document.getElementById('typing-word-rome').removeChild(document.getElementById('typing-word-rome').firstChild);
+}
+
+
 
 
