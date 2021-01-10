@@ -61,17 +61,26 @@ document.addEventListener('DOMContentLoaded', function() {
 		let word =  wordListIt.next();
 		let subWord = word.word;
 		let subWordRome = word.wordRome;
+
 		displayWord(subWord, subWordRome);
+
 		// タイピング処理
 		let i = 0;
 		document.onkeydown = function(e) {
 			typedChar = String.fromCharCode(e.keyCode);
 			// タイプされた文字の判定
 			if (typedChar == subWordRome[i]) {
-				console.log(typedChar)
+				let typingWordRome = document.getElementById("typing-word-rome");
+				typingWordRome.textContent = subWordRome.slice(i+1, subWordRome.length);
+				let typed = document.getElementById("typed-word-rome");
+				typed.textContent = subWordRome.slice(0, i+1);
 				console.log('正解')
 				i++;
+			} else {
+				//document.getElementById("miss").play();
+				console.log('不正解')
 			}
+
 			// 正解した文字数とお題の単語の文字数を比較
 			if (subWordRome.length == i) {	// 一致すれば次の単語
 				i = 0
@@ -101,7 +110,7 @@ function displayWord(word, wordRome) {
 
 function hiddenWord() {
 	document.getElementById('typing-word').removeChild(document.getElementById('typing-word').firstChild);
-	document.getElementById('typing-word-rome').removeChild(document.getElementById('typing-word-rome').firstChild);
+	document.getElementById('typed-word-rome').removeChild(document.getElementById('typed-word-rome').firstChild);
 }
 
 

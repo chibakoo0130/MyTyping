@@ -6,9 +6,19 @@
 </head>
 <body>
   <div align="center" id="typing-area" class="typing-area">
-    <a id="typing-word"></a><br/>
-    <a id="typing-word-rome"></a>
-    <input id="typing" type="text" readonly>
+
+    <div>
+      <a id="typing-word"></a><br/>
+    </div>
+    <!-- style="width: 656px"を指定 -->
+    <div>
+      <span style="color: red" id="typed-word-rome"></span>
+      <span id="typing-word-rome"></span>
+    </div>
+    <audio id="miss" preload="auto">
+      <source src="sound/Quiz-Wrong_Buzzer02-1.mp3" type="audio/mp3">
+      <p>音声を再生できません。</p>
+    </audio>
   </div>
   <div align="center">
     <form>
