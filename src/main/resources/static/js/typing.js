@@ -65,19 +65,31 @@ document.addEventListener('DOMContentLoaded', function() {
 		displayWord(subWord, subWordRome);
 
 		// タイピング処理
-		let i = 0;
+		let i = 0; // お題の単語の文字のインデックス
+		let wordNum = 0; // お題の単語の順番
+		let missWords = []; // ミスした単語を保持する配列
 		document.onkeydown = function(e) {
 			typedChar = String.fromCharCode(e.keyCode);
+			let typingWordRome = document.getElementById("typing-word-rome");
+			let typed = document.getElementById("typed-word-rome");
 			// タイプされた文字の判定
 			if (typedChar == subWordRome[i]) {
-				let typingWordRome = document.getElementById("typing-word-rome");
 				typingWordRome.textContent = subWordRome.slice(i+1, subWordRome.length);
-				let typed = document.getElementById("typed-word-rome");
 				typed.textContent = subWordRome.slice(0, i+1);
 				console.log('正解')
 				i++;
 			} else {
 				//document.getElementById("miss").play();
+				// ミスした単語をキーとする連想配列の存在確認
+				console.log(missWords[wordNum])
+				if (missWords[wordNum] === undefined) {
+					// 存在しない場合、ミスした単語をキーとする配列作成
+					missWords.push({[subWordRome]: {}});
+				};
+				console.log(missWords)
+				console.log("a"+wordNum)
+				missWords[wordNum][subWordRome][i] = subWordRome[i];
+				console.log(missWords)
 				console.log('不正解')
 			}
 
@@ -85,11 +97,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (subWordRome.length == i) {	// 一致すれば次の単語
 				i = 0
 				if (wordListIt.hasNext()) {
+					console.log("=")
 					hiddenWord();
 					word = wordListIt.next();
 					subWord = word.word;
 					subWordRome = word.wordRome;
 					displayWord(subWord, subWordRome);
+					console.log("==")
+					// missWords配列の個数とお題の単語の個数を揃えるため、
+					// missWords配列に空要素を追加
+					if (missWords[wordNum] === undefined) {
+						missWords.push({});
+					};
+					wordNum += 1;
+					console.log("===")
+					console.log("b"+wordNum)
 				} else {
 					window.alert('終了');
 				}
